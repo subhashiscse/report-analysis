@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/subhashismollick/Projects/Class/ReportAnalysis/ReportAnalysis/ReportAnalysis.csproj": {}
+    "/Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/ReportAnalysis.csproj": {}
   },
   "projects": {
-    "/Users/subhashismollick/Projects/Class/ReportAnalysis/ReportAnalysis/ReportAnalysis.csproj": {
+    "/Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/ReportAnalysis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/subhashismollick/Projects/Class/ReportAnalysis/ReportAnalysis/ReportAnalysis.csproj",
+        "projectUniqueName": "/Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/ReportAnalysis.csproj",
         "projectName": "ReportAnalysis",
-        "projectPath": "/Users/subhashismollick/Projects/Class/ReportAnalysis/ReportAnalysis/ReportAnalysis.csproj",
+        "projectPath": "/Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/ReportAnalysis.csproj",
         "packagesPath": "/Users/subhashismollick/.nuget/packages/",
-        "outputPath": "/Users/subhashismollick/Projects/Class/ReportAnalysis/ReportAnalysis/obj/",
+        "outputPath": "/Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/subhashismollick/.nuget/NuGet/NuGet.Config"
@@ -39,9 +39,27 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[6.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.12, )"
+            },
             "Npgsql": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.8, )"
             }
           },
           "imports": [

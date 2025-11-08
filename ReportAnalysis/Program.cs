@@ -100,71 +100,35 @@
 //     }
 // }
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
-namespace SimpleFetchApp
+class Program
 {
-    class Program
+    static async Task Main(string[] args)
     {
-        static async Task Main(string[] args)
+        string connectionString =
+            "Host=10.5.6.34;Port=5432;Database=dgis;Username=postgres;Password=bg@123#$%";
+        await using var conn = new NpgsqlConnection(connectionString);
+        await conn.OpenAsync();
+
+        string query = @"
+            SELECT id, wkt_building
+            FROM poi_zurich_ch
+            LIMIT 20
+        ";
+
+        await using var cmd = new NpgsqlCommand(query, conn);
+        await using var reader = await cmd.ExecuteReaderAsync();
+
+        while (await reader.ReadAsync())
         {
-            string connectionString =
-                "Host=10.5.6.34;Port=5432;Database=dgis;Username=postgres;Password=bg@123#$%";
-
-            // ✅ Change `geom` to your actual geometry column name
-            string sqlQuery =
-                "SELECT *, ST_AsGeoJSON(geom) AS geojson FROM poi_zurich_ch;";
-
-            try
-            {
-                await using var conn = new NpgsqlConnection(connectionString);
-                await conn.OpenAsync();
-
-                Console.WriteLine("✅ Connected to Database");
-
-                var results = await FetchAll(conn, sqlQuery);
-
-                Console.WriteLine("\n--- Results ---");
-
-                foreach (var row in results)
-                {
-                    Console.WriteLine($"Name: {row.GetValueOrDefault("poi_name")}");
-                    Console.WriteLine($"Type: {row.GetValueOrDefault("poi_type")}");
-                    Console.WriteLine($"GeoJSON: {row.GetValueOrDefault("geojson")}");
-                    Console.WriteLine("----------------------------");
-                }
-
-                Console.WriteLine("✅ Completed");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("❌ Error: " + ex.Message);
-            }
+            Console.WriteLine(
+                $"ID: {reader[0]}, ",
+                $"ID: {reader[1]}, "
+            );
+            Console.WriteLine(reader[1]); 
         }
 
-        private static async Task<List<Dictionary<string, object>>> FetchAll(NpgsqlConnection conn, string query)
-        {
-            var list = new List<Dictionary<string, object>>();
-
-            await using var cmd = new NpgsqlCommand(query, conn);
-            await using var reader = await cmd.ExecuteReaderAsync();
-
-            while (await reader.ReadAsync())
-            {
-                var row = new Dictionary<string, object>();
-
-                for (int i = 0; i < reader.FieldCount; i++)
-                {
-                    row[reader.GetName(i)] = reader.IsDBNull(i) ? null : reader.GetValue(i);
-                }
-
-                list.Add(row);
-            }
-
-            return list;
-        }
     }
 }
