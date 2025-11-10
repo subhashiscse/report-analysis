@@ -107,7 +107,7 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        string connectionString =
+        /*string connectionString =
             "Host=10.5.6.34;Port=5432;Database=dgis;Username=postgres;Password=bg@123#$%";
         await using var conn = new NpgsqlConnection(connectionString);
         await conn.OpenAsync();
@@ -124,14 +124,13 @@ class Program
         while (await reader.ReadAsync())
         {
             Console.WriteLine(
-                $"ID: {reader[0]}, ",
-                $"ID: {reader[1]}, "
+                $"ID: {reader[0]}, "
             );
             Console.WriteLine(reader[1]); 
-        }
-        /*using var db = new ApplicationDbContext();
+        }*/
+        using var db = new ApplicationDbContext();
 
-        var data = await db.PoiZurichCh
+        var data = await db.PoiZurich
             .Take(20)
             .ToListAsync();
 
@@ -140,6 +139,6 @@ class Program
             Console.WriteLine($"ID: {item.Id}");
             Console.WriteLine($"WKT: {item.Wkt_Building}");
             Console.WriteLine("--------------------------");
-        }*/
+        }
     }
 }

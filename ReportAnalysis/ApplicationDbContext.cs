@@ -1,9 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using ReportAnalysis;
-
 public class ApplicationDbContext : DbContext
 {
-    public DbSet<PoiZurich> PoiZurichCh { get; set; }
+    public DbSet<PoiZurich> PoiZurich { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
