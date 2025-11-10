@@ -107,16 +107,22 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        /*string connectionString =
+        string connectionString =
             "Host=10.5.6.34;Port=5432;Database=dgis;Username=postgres;Password=bg@123#$%";
         await using var conn = new NpgsqlConnection(connectionString);
         await conn.OpenAsync();
 
-        string query = @"
-            SELECT id, wkt_building
-            FROM poi_zurich_ch
-            LIMIT 20
-        ";
+        // string query = @"
+        //     SELECT id, wkt_building
+        //     FROM poi_zurich_ch
+        //     LIMIT 20
+        // ";
+        string bbox = "8.5,47.3,8.6,47.4";
+        string[] bboxParts = bbox.Split(','); 
+        string query = $@"
+               SELECT *, ST_AsGeoJSON(building_geom) AS geojson
+                FROM poi_zurich_ch
+                WHERE building_geom && ST_MakeEnvelope({bboxParts[0]}, {bboxParts[1]}, {bboxParts[2]}, {bboxParts[3]}, 4326)";
 
         await using var cmd = new NpgsqlCommand(query, conn);
         await using var reader = await cmd.ExecuteReaderAsync();
@@ -127,8 +133,8 @@ class Program
                 $"ID: {reader[0]}, "
             );
             Console.WriteLine(reader[1]); 
-        }*/
-        using var db = new ApplicationDbContext();
+        }
+        /*using var db = new ApplicationDbContext();
 
         var data = await db.PoiZurich
             .Take(20)
@@ -139,6 +145,6 @@ class Program
             Console.WriteLine($"ID: {item.Id}");
             Console.WriteLine($"WKT: {item.Wkt_Building}");
             Console.WriteLine("--------------------------");
-        }
+        }*/
     }
 }
