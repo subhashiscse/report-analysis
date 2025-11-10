@@ -129,6 +129,17 @@ class Program
             );
             Console.WriteLine(reader[1]); 
         }
+        /*using var db = new ApplicationDbContext();
 
+        var data = await db.PoiZurichCh
+            .Take(20)
+            .ToListAsync();
+
+        foreach (var item in data)
+        {
+            Console.WriteLine($"ID: {item.Id}");
+            Console.WriteLine($"WKT: {item.Wkt_Building}");
+            Console.WriteLine("--------------------------");
+        }*/
     }
 }

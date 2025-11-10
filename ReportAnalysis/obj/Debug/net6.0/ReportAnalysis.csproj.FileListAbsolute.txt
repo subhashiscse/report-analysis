@@ -55,10 +55,6 @@
 /Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
 /Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/bin/Debug/net6.0/Npgsql.dll
 /Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
-/Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/bin/Debug/net6.0/System.Diagnostics.DiagnosticSource.dll
-/Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/bin/Debug/net6.0/System.Text.Encodings.Web.dll
-/Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/bin/Debug/net6.0/System.Text.Json.dll
-/Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
 /Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/obj/Debug/net6.0/ReportAnalysis.csproj.AssemblyReference.cache
 /Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/obj/Debug/net6.0/ReportAnalysis.GeneratedMSBuildEditorConfig.editorconfig
 /Users/subhashismollick/Projects/Class/Report/report-analysis/ReportAnalysis/obj/Debug/net6.0/ReportAnalysis.AssemblyInfoInputs.cache
